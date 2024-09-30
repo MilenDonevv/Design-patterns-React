@@ -5,6 +5,7 @@ import { LargeProductListItem } from './products/LargeProductListItem';
 import { SmallProductListItem } from './products/SmallProductListItem';
 import { RegularList } from './RegularList';
 import { NumberedList } from './NumberedList';
+import { Modal } from './designs/modals';
 
 
 /*
@@ -30,6 +31,8 @@ function App() {
 
 
 */
+
+
 
 const people = [
   {
@@ -72,6 +75,8 @@ const products = [
     rating: 4.2,
   }
 ];
+
+/*
 
 function App() {
 
@@ -116,3 +121,16 @@ when different components are made separately
 6 - NumberedList
 
 */
+
+function App() {
+
+  return (
+    <>
+      <Modal>
+        <LargeProductListItem product={products[0]} />
+      </Modal>
+    </>
+  )
+}
+
+export default App;
