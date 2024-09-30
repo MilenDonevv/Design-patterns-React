@@ -36,7 +36,7 @@ const Container = styled.div`
 `;
 
 const Pane = styled.div`
-    flex: 1;
+    flex: ${props => props.weight};
 `;
 
 // export const SplitScreen = ({
@@ -55,17 +55,17 @@ const Pane = styled.div`
 //     )
 // }
 
-export const SplitScreen = ({
-    left: Left,                      // property left has a value the Component Left
-    right: Right,
-}) => {
+export const SplitScreen = ({children, leftWeight = 1, rightWeight = 1,}) => {
+    const [left, right] = children;  // these are elements, NOT COMPONENTS 
     return (
         <Container>
-            <Pane>
-                <Left />
+            <Pane weight={leftWeight}>
+                {/* <Left /> */}
+                {left}
             </Pane>
-            <Pane>
-                <Right />
+            <Pane weight={rightWeight}>
+                {/* <Right /> */}
+                {right}
             </Pane>
         </Container>
     )
