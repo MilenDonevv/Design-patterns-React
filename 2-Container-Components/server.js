@@ -1,6 +1,8 @@
 import express from 'express'
+import cors from 'cors'
 
 const app = express();
+app.use(cors());
 
 app.use(express.json())
 
@@ -74,7 +76,7 @@ app.get('/users', (req, res) => {
     res.json(users)
 })
 
-app.get('/products', (res, req) => {
+app.get('/products', (req, res) => {
     res.json(products);
 });
 

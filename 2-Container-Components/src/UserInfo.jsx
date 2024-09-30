@@ -3,9 +3,9 @@
 
 
 export const UserInfo = ({ user }) => {
-    const { name, age, hairColor, hobbies } = user
+    const { name, age, hairColor, hobbies } = user || {}
 
-    return (
+    return user ? (
         <>
             <h3>{name}</h3>
             <p>Age: {age}</p>
@@ -13,9 +13,11 @@ export const UserInfo = ({ user }) => {
             <h3>Hobbies:</h3>
             <ul>
                 {
-                    hobbies.map(hobby => <li key={hobby}>{hobby}</li>)
+                    Array.isArray(hobbies) && hobbies.length > 0 ? (
+                        hobbies.map(hobby => <li key={hobby}>{hobby}</li>)
+                    ) : <p>No hobbies listed.</p>
                 }
             </ul>
         </>
-    )
+    ) : <p>Loading...</p>
 }
