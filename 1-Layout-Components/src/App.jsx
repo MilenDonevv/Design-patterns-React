@@ -1,7 +1,10 @@
 import { SplitScreen } from './designs/split-screens'
 import { LargePersonListItem } from './people/LargePersonListItem';
 import { SmallPersonListItem } from './people/SmallPersonListItem';
+import { LargeProductListItem } from './products/LargeProductListItem';
+import { SmallProductListItem } from './products/SmallProductListItem';
 import { RegularList } from './RegularList';
+import { NumberedList } from './NumberedList';
 
 
 /*
@@ -74,18 +77,42 @@ function App() {
 
   return (
     <>
-      <RegularList
+      <NumberedList
         items={people}
         resourceName="person" // the prop that SmallPersonListItem and Large... are expexting
         itemComponent={SmallPersonListItem}
       />
-      <RegularList
+      <NumberedList
         items={people}
         resourceName="person" // the prop that SmallPersonListItem and Large... are expexting
         itemComponent={LargePersonListItem}
+      />
+      <NumberedList
+        items={products}
+        resourceName="product" // the prop that SmallPersonListItem and Large... are expexting
+        itemComponent={SmallProductListItem}
+      />
+      <NumberedList
+        items={products}
+        resourceName="product" // the prop that SmallPersonListItem and Large... are expexting
+        itemComponent={LargeProductListItem}
       />
     </>
   )
 }
 
 export default App
+
+/*
+
+We have 6 different Components --> we can optimize our app as we wish cuz it is easy 
+when different components are made separately
+
+1 - SmallPersonListItem
+2 - LargePersonListItem
+3 - SmallProductListItem
+4 - LargeProductListItem
+5 - RegularList
+6 - NumberedList
+
+*/
