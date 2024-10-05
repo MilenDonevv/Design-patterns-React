@@ -5,7 +5,6 @@ import axios from 'axios'
 
 export const UserLoader = ({ userId, children }) => {
     const [user, setUser] = useState(null)
-    const { id } = 
 
     useEffect(() => {
         (async () => {
