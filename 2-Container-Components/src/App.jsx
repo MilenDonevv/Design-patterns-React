@@ -1,9 +1,11 @@
 // import { CurrentUserLoader } from "./CurrentUserLoader"
 import { UserInfo } from "./UserInfo"
-import { UserLoader } from "./userLoader"
+// import { UserLoader } from "./userLoader"
+import { ResourceLoader } from "./ResourceLoader"
+import { ProductInfo } from './ProductInfo'
 
 
-const userIds = ['123', '234', '345']
+// const userIds = ['123', '234', '345']
 
 function App() {
 
@@ -20,15 +22,25 @@ function App() {
   //     </UserLoader>
   //   </>
   // )
+  // return (
+  //   <>
+  //     {
+  //       userIds.map((id) => (
+  //         <UserLoader key={id} userId={id}>
+  //           <UserInfo />
+  //         </UserLoader>
+  //       ))
+  //     }
+  //   </>
+  // )
   return (
     <>
-      {
-        userIds.map((id) => (
-          <UserLoader key={id} userId={id}>
-            <UserInfo />
-          </UserLoader>
-        ))
-      }
+      <ResourceLoader resourceUrl='/users/123' resourceName='user'>
+        <UserInfo />
+      </ResourceLoader>
+      <ResourceLoader resourceUrl="/products/1234" resourceName='product'>
+        <ProductInfo />
+      </ResourceLoader>
     </>
   )
 }
