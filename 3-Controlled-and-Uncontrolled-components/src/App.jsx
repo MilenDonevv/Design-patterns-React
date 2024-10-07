@@ -3,6 +3,7 @@ import { ControlledForm } from './ControlledForm'
 import { useState } from 'react'
 import { UncontrolledModal } from './UncontrolledModal'
 import { ControlledModal } from './ControlledModal'
+import { UncontrolledOnboardingFlow } from './UncontrolledOnboardingFlow'
 
 
 // function App() {
@@ -24,28 +25,76 @@ import { ControlledModal } from './ControlledModal'
 // export default App
 
 
+// function App() {
+
+//   const [shouldShowModal, setShouldShowModal] = useState(false)
+
+//   return (
+//     <>
+//       <ControlledModal 
+//         shouldShow={shouldShowModal}
+//         onRequestClose={() => {
+//           alert('Are you sure you want to close it?')
+//           setShouldShowModal(false)
+//         }}
+//       >
+//         <h1>Hello!</h1>
+//       </ControlledModal>
+//       <button onClick={() => setShouldShowModal(!shouldShowModal)}>
+//         {shouldShowModal ? 'Hide Modal' : 'Show Modal'}
+//       </button>
+//     </>
+//   )
+// }
+
+// export default App
+
+// The parent is taking care of the state of the Modal --> Controlled modal
+
+
+// const StepOne = () => <h1>Step 1</h1>
+// const StepTwo = () => <h1>Step 2</h1>
+// const StepThree = () => <h1>Step 3</h1>
+
+
+const StepOne = ({ goToNext }) => (
+  <>
+  <h1>Step 1</h1>
+  <button onClick={goToNext}>Next</button>
+  </>
+)
+
+
+const StepTwo = ({ goToNext }) => (
+  <>
+  <h1>Step 2</h1>
+  <button onClick={goToNext}>Next</button>
+  </>
+)
+
+
+const StepThree = ({ goToNext }) => (
+  <>
+  <h1>Step 3</h1>
+  <button onClick={goToNext}>Next</button>
+  </>
+)
+
+
+
 function App() {
 
-  const [shouldShowModal, setShouldShowModal] = useState(false)
 
   return (
     <>
-      <ControlledModal 
-        shouldShow={shouldShowModal}
-        onRequestClose={() => {
-          alert('Are you sure you want to close it?')
-          setShouldShowModal(false)
-        }}
-      >
-        <h1>Hello!</h1>
-      </ControlledModal>
-      <button onClick={() => setShouldShowModal(!shouldShowModal)}>
-        {shouldShowModal ? 'Hide Modal' : 'Show Modal'}
-      </button>
+      {/* inside we will have several other components each of which represents a step in the onboarding flow*/}
+      <UncontrolledOnboardingFlow>
+        <StepOne />
+        <StepTwo />
+        <StepThree />
+      </UncontrolledOnboardingFlow>
     </>
   )
 }
 
 export default App
-
-// The parent is taking care of the state of the Modal --> Controlled modal
