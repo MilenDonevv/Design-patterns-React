@@ -59,26 +59,27 @@ import { UncontrolledOnboardingFlow } from './UncontrolledOnboardingFlow'
 
 const StepOne = ({ goToNext }) => (
   <>
-  <h1>Step 1</h1>
-  <button onClick={goToNext}>Next</button>
+  <h1>Step 2</h1>
+  <button onClick={() => goToNext({ name: 'Milen Donev'})}>Next</button>
   </>
 )
 
 
 const StepTwo = ({ goToNext }) => (
   <>
-  <h1>Step 2</h1>
-  <button onClick={goToNext}>Next</button>
+  <h1>Step 3</h1>
+  <button onClick={() => goToNext({ age: 29})}>Next</button>
   </>
 )
 
 
 const StepThree = ({ goToNext }) => (
   <>
-  <h1>Step 3</h1>
-  <button onClick={goToNext}>Next</button>
+  <h1>Step 1</h1>
+  <button onClick={() => goToNext({ hairColor: 'black'})}>Next</button>
   </>
 )
+
 
 
 
@@ -88,7 +89,9 @@ function App() {
   return (
     <>
       {/* inside we will have several other components each of which represents a step in the onboarding flow*/}
-      <UncontrolledOnboardingFlow>
+      <UncontrolledOnboardingFlow onFinish={data => {
+        alert('Onboarding complete')
+        console.log(data)}}>
         <StepOne />
         <StepTwo />
         <StepThree />

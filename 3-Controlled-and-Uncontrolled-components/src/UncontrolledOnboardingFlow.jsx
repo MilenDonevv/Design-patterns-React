@@ -15,8 +15,14 @@ const goToNext = (stepData) => {
     }
 
     console.log(updatedData);
-    
-    setCurrentIndex(currentIndex + 1)
+
+    if (nextIndex < children.length) {
+        setCurrentIndex(nextIndex)
+    } else {
+        onFinish(updatedData)
+    }
+
+    setOnboardingData(updatedData)
 }
 
 
