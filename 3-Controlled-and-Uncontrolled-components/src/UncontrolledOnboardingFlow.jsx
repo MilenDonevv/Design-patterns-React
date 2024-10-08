@@ -6,7 +6,16 @@ const [onboardingData, setOnboardingData] = useState({})
 const [currentIndex, setCurrentIndex] = useState(0) // initial value - first child
 
 
-const goToNext = () => {
+const goToNext = (stepData) => {
+    const nextIndex = currentIndex + 1;
+
+    const updatedData = {
+        ...onboardingData,
+        ...stepData,
+    }
+
+    console.log(updatedData);
+    
     setCurrentIndex(currentIndex + 1)
 }
 
