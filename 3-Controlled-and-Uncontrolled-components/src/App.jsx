@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { UncontrolledModal } from './UncontrolledModal'
 import { ControlledModal } from './ControlledModal'
 import { UncontrolledOnboardingFlow } from './UncontrolledOnboardingFlow'
+import { ControlledOnboardingFlow } from './ControlledOnboardingFlow'
 
 
 // function App() {
@@ -59,24 +60,24 @@ import { UncontrolledOnboardingFlow } from './UncontrolledOnboardingFlow'
 
 const StepOne = ({ goToNext }) => (
   <>
-  <h1>Step 2</h1>
-  <button onClick={() => goToNext({ name: 'Milen Donev'})}>Next</button>
+    <h1>Step 2</h1>
+    <button onClick={() => goToNext({ name: 'Milen Donev' })}>Next</button>
   </>
 )
 
 
 const StepTwo = ({ goToNext }) => (
   <>
-  <h1>Step 3</h1>
-  <button onClick={() => goToNext({ age: 29})}>Next</button>
+    <h1>Step 3</h1>
+    <button onClick={() => goToNext({ age: 29 })}>Next</button>
   </>
 )
 
 
 const StepThree = ({ goToNext }) => (
   <>
-  <h1>Step 1</h1>
-  <button onClick={() => goToNext({ hairColor: 'black'})}>Next</button>
+    <h1>Step 1</h1>
+    <button onClick={() => goToNext({ hairColor: 'black' })}>Next</button>
   </>
 )
 
@@ -84,18 +85,28 @@ const StepThree = ({ goToNext }) => (
 
 
 function App() {
+  const [onboardingData, setOnboardingData] = useState({})
+  const [currentIndex, setCurrentIndex] = useState(0) // initial value - first child
+
+  const onNext = (stepData) => {
+    setOnboardingData([...onboardingData, ...stepData])
+    setCurrentIndex(currentIndex + 1)
+  }
+
+  
 
 
   return (
     <>
       {/* inside we will have several other components each of which represents a step in the onboarding flow*/}
-      <UncontrolledOnboardingFlow onFinish={data => {
-        alert('Onboarding complete')
-        console.log(data)}}>
+      <ControlledOnboardingFlow 
+        currentIndex={currentIndex}
+        onNext={onNext}
+      >
         <StepOne />
         <StepTwo />
         <StepThree />
-      </UncontrolledOnboardingFlow>
+      </ControlledOnboardingFlow>
     </>
   )
 }
