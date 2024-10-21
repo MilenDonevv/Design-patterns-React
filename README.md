@@ -34,4 +34,3 @@ const MyComponent = ({ data, changeData, onSubmit }) => {
 -> Which type should we generally prefer? 
     More often than not we should prefer controlled components, because they are more reusable and also much easier to test.
 
-N.B. Finish the last module!
